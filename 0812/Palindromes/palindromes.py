@@ -13,12 +13,12 @@ def get_test_data():
 
 def write_result_file(resultstr, num_error, num_test):
     score = int(round((float(num_test - num_error)/num_test)*100))
-    with open(score_file,'w') as f:
-        f.write(resultstr + "\n\n")
-        f.write("Score: " + str(num_test - num_error) + " out of " + \
+    #with open(score_file,'w') as f:
+    print(resultstr + "\n\n")
+    print("Score: " + str(num_test - num_error) + " out of " + \
                 str(num_test) + " = " + str(score) + "%\n\n")
-        f.write("*************Original submission*************")
-    print ("Scores written to " + score_file)
+    print("*************Original submission*************")
+    #print ("Scores written to " + score_file)
 
 def grade():
     # First evaluate tests and store results.
