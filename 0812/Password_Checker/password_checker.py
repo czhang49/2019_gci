@@ -4,7 +4,7 @@ import os
 def is_valid_password(proposed_password):
     # Fill in your implementation of the function
     pass
-
+    
 score_file =  "./" + os.path.splitext(__file__)[0]+ "_score.txt"
 
 def get_test_data():
@@ -24,6 +24,7 @@ def grade():
     # First evaluate tests and store results.
     test_data = get_test_data()
     error_list = []
+    correct_list = []
     num_test = 0
 
     for i, test_case in enumerate(test_data.keys()):
@@ -32,6 +33,8 @@ def grade():
         correct_result = test_data[test_case]
         if (correct_result != student_result):
             error_list.append((i,student_result,correct_result))
+        else:
+            correct_list.append((i,student_result))
     # Now report results.
     resultstr = ""
     if (len(error_list)==0):
@@ -44,6 +47,10 @@ def grade():
         for test_num,s_result,c_result in error_list:
             resultstr += '\nTest ' + str(test_num) + ' failed:\n   Student had:\t' + \
                     str(s_result) + '\n   Should have:\t' + str(c_result)
+    for test_num,c_result in correct_list:
+        resultstr += '\nTest ' + str(test_num) + ' succeeded:\n   Result is:\t' + \
+                str(c_result) + '\n'
+
     write_result_file(resultstr, len(error_list), num_test)
 
 if __name__ == '__main__':
